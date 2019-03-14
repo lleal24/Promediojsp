@@ -10,12 +10,21 @@
     double num2=0;
     double num3=0;
     double promedio=0;
+    String url = "";
+    
     try{
     num1=Double.parseDouble(numero1);
     num2=Double.parseDouble(numero2);
     num3=Double.parseDouble(numero3);
     promedio = (num1+num2+num3)/3;
     
+    if (promedio <= 2.5){
+        url = "Imagenes/rojo.png";
+    }else if(promedio > 2.5 && promedio <= 3.5){
+        url = "Imagenes/amarillo.jpg";       
+    }else if (promedio > 3.5){
+        url = "Imagenes/verde.png";
+    }
         
     }catch(Exception e){
         out.print("FAIL");
@@ -24,10 +33,6 @@
     
 
 %>
-
-
-<%= promedio %>
-
 
 
 
@@ -47,8 +52,9 @@
             <p>Ingrese segundo numero: <input type="text" name="num2"/></p>
             <p>Ingrese tercer numero: <input type="text" name="num3"/></p>
             <p><input type="submit" name="" value="Calcular promedio"/></p>
-            <p><%=promedio%></p>               
+            <p><b>Pomedio:</b> <%=promedio%></p>               
         </form>
+            <img src="<%=url%>" width="200" height="200"/>
       
         
         

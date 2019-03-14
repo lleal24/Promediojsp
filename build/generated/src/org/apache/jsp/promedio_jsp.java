@@ -54,12 +54,21 @@ public final class promedio_jsp extends org.apache.jasper.runtime.HttpJspBase
     double num2=0;
     double num3=0;
     double promedio=0;
+    String url = "";
+    
     try{
     num1=Double.parseDouble(numero1);
     num2=Double.parseDouble(numero2);
     num3=Double.parseDouble(numero3);
     promedio = (num1+num2+num3)/3;
     
+    if (promedio <= 2.5){
+        url = "Imagenes/rojo.png";
+    }else if(promedio > 2.5 && promedio <= 3.5){
+        url = "Imagenes/amarillo.jpg";       
+    }else if (promedio > 3.5){
+        url = "Imagenes/verde.png";
+    }
         
     }catch(Exception e){
         out.print("FAIL");
@@ -68,11 +77,6 @@ public final class promedio_jsp extends org.apache.jasper.runtime.HttpJspBase
     
 
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.print( promedio );
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -93,10 +97,13 @@ public final class promedio_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <p>Ingrese segundo numero: <input type=\"text\" name=\"num2\"/></p>\n");
       out.write("            <p>Ingrese tercer numero: <input type=\"text\" name=\"num3\"/></p>\n");
       out.write("            <p><input type=\"submit\" name=\"\" value=\"Calcular promedio\"/></p>\n");
-      out.write("            <p>");
+      out.write("            <p><b>Pomedio:</b> ");
       out.print(promedio);
       out.write("</p>               \n");
       out.write("        </form>\n");
+      out.write("            <img src=\"");
+      out.print(url);
+      out.write("\" width=\"200\" height=\"200\"/>\n");
       out.write("      \n");
       out.write("        \n");
       out.write("        \n");
